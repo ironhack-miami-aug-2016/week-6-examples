@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
+  before_action :user_setup, only: [:new]
+  before_action :redirect_if_already_logged_in, only: [:new]
 
   def new
-    if @current_user
-      redirect_to "/"
-    else
-      render :new
-    end
+    # user_setup
+    # redirect_if_already_logged_in
+
+    render :new
   end
 
   def create
