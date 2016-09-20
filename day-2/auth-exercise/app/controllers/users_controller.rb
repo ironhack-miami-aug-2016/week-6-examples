@@ -16,6 +16,11 @@ class UsersController < ApplicationController
 
   # renders the signup form
   def new
+    if @current_user
+      redirect_to "/"
+    else
+      render :new
+    end
   end
 
   def show
@@ -24,7 +29,7 @@ class UsersController < ApplicationController
     if @current_user
       render :show
     else
-      redirect_to "/"
+      redirect_to "/login"
     end
   end
 
